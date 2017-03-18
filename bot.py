@@ -1,4 +1,5 @@
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
+from planet import *
 
 def main():
     updater = Updater("315853602:AAHhawei6okVUMQkcLgR13VC4Zi6BpWG944")
@@ -20,7 +21,7 @@ def show_error (bot, update, error):
     print(error)
 
 def talk_to_me(bot, update):
-    print(update.message.text)
-    bot.sendMessage(update.message.chat_id, update.message.text)
+    sign = get_sign_by_planet(update.message.text)
+    bot.sendMessage(update.message.chat_id, sign)
 
 main()
